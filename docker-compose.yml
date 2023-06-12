@@ -9,9 +9,6 @@ services:
     hostname: srv.ajil.ch
     restart: unless-stopped
     environment:
-      VIRTUAL_HOST: duplicacy.${TLD}
-      LETSENCRYPT_HOST: duplicacy.${TLD}
-      VIRTUAL_PORT: 3875
       USR_ID: 0
       GRP_ID: 0
       TZ: Europe/Zurich
