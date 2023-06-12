@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    environment:
+      TS_AUTHKEY: ${TAILSCALE_AUTHKEY}
+  duplicacy:
+    image: saspus/duplicacy-web:latest
+    hostname: srv.ajil.ch
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: duplicacy.${TLD}
+      LETSENCRYPT_HOST: duplicacy.${TLD}
+      VIRTUAL_PORT: 3875
+      USR_ID: 0
+      GRP_ID: 0
+      TZ: Europe/Zurich
+      DWE_PASSWORD: ${DWE_PASSWORD}
+    ports:
+      - "3875:3875"
+    volumes:
+      - /home:/backuproot
+      - /home/muy/.ssh/id_rsa:/id_rsa
