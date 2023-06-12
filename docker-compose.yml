@@ -4,6 +4,8 @@ services:
     image: tailscale/tailscale:latest
     environment:
       TS_AUTHKEY: ${TAILSCALE_AUTHKEY}
+    network_mode: host
+    restart: unless-stopped
   duplicacy:
     image: saspus/duplicacy-web:latest
     hostname: srv.ajil.ch
