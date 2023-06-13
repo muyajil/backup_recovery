@@ -1,11 +1,5 @@
 version: "3.2"
 services:
-  tailscale:
-    image: tailscale/tailscale:latest
-    environment:
-      TS_AUTHKEY: ${TAILSCALE_AUTHKEY}
-    network_mode: host
-    restart: unless-stopped
   duplicacy:
     image: saspus/duplicacy-web:latest
     hostname: srv.ajil.ch
@@ -19,4 +13,4 @@ services:
       - "3875:3875"
     volumes:
       - /home:/backuproot
-      - /home/muy/.ssh/id_rsa:/id_rsa
+      - /root/id_rsa:/id_rsa
